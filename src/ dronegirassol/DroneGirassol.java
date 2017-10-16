@@ -1,9 +1,8 @@
 package dronegirassol;
 
-import observer.Celular;
-import observer.MonitorBateria;
-import state.Falseife;
 import strategy.ModoGps;
+import strategy.ModoAtt;
+import state.FailSafe;
 
 public class DroneGirassol {
 
@@ -13,9 +12,11 @@ public class DroneGirassol {
     public static void main(String[] args) {
         Drone drone = new Drone();
         drone.setModoVoar(new ModoGps());
-        drone.voar();
-        drone.chaveEstado();
-        drone.voar();
+        drone.voandoEm();
+        drone.setModoVoar(new ModoAtt());
+        drone.voandoEm();
+        drone.setEstado(new FailSafe());
+        drone.voandoEm();
 
     }
 
